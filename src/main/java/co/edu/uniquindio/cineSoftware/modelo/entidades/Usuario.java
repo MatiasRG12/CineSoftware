@@ -13,7 +13,6 @@ public class Usuario implements Serializable {
 
     @Id
     private String codigo;
-
     private String nombreUsuario;
     private String contraseña;
 }
