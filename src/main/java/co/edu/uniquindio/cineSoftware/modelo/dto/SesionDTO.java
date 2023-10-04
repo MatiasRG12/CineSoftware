@@ -13,9 +13,9 @@ public class SesionDTO {
 
     @NotEmpty(message = "No puede estar vacio")
     @Length(max = 30, message = "{user.id.length}")
-    private String userId;
+    private String nombreUsuario;
 
     @NotEmpty(message = "contraseña no puede ser vacia")
     @Length(max = 150, message = "{user.password.length}")
-    private String password;
+    private String contrasenia;
 }

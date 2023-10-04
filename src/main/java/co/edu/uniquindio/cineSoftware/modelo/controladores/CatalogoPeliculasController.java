@@ -3,7 +3,7 @@ package co.edu.uniquindio.cineSoftware.modelo.controladores;
 
 import co.edu.uniquindio.cineSoftware.modelo.dto.MensajeDTO;
 import co.edu.uniquindio.cineSoftware.modelo.dto.PeliculaDTO;
-import co.edu.uniquindio.cineSoftware.modelo.servicios.ServiciosAdministrador;
+import co.edu.uniquindio.cineSoftware.modelo.servicios.interfaces.ServiciosAdministrador;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -36,6 +36,12 @@ public class CatalogoPeliculasController {
                 .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("", new Object[]{peliculaEliminada}, LocaleContextHolder.getLocale()), peliculaEliminada));
     }
 
+    @GetMapping("/listar")
+    public ResponseEntity<MensajeDTO> listarPeliculas()throws Exception{
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("", null, LocaleContextHolder.getLocale()), sa.listarPeliculas()));
+    }
 
 
 

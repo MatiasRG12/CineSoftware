@@ -1,18 +1,18 @@
 package co.edu.uniquindio.cineSoftware.modelo.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
+import lombok.Data;
 
 import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Data
 public class Usuario implements Serializable {
 
     @Id
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int codigo;
     private String nombreUsuario;
-    private String contraseña;
+    private String contrasenia;
 }

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.cineSoftware.modelo.servicios;
+package co.edu.uniquindio.cineSoftware.modelo.servicios.interfaces;
 
 import co.edu.uniquindio.cineSoftware.modelo.dto.SesionDTO;
 import co.edu.uniquindio.cineSoftware.modelo.dto.TokenDTO;
@@ -9,9 +9,6 @@ import java.util.Map;
 @Service
 public interface ServiciosGenerales {
 
-    Map<String, TokenDTO> login(SesionDTO sesionDTO) throws Exception;
-
-    TokenDTO refreshToken(String authorization) throws Exception;
-
+    void login(SesionDTO sesionDTO) throws Exception;
 
 }
