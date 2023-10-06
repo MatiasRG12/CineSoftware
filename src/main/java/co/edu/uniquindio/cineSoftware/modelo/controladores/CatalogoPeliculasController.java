@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/catalogoP")
 public class CatalogoPeliculasController {
 
@@ -40,9 +41,6 @@ public class CatalogoPeliculasController {
     public ResponseEntity<MensajeDTO> listarPeliculas()throws Exception{
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("", null, LocaleContextHolder.getLocale()), sa.listarPeliculas()));
+                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("bienvenida.mensaje", null, LocaleContextHolder.getLocale()), sa.listarPeliculas()));
     }
-
-
-
 }
