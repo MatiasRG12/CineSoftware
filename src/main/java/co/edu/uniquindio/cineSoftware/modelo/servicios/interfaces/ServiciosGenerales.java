@@ -9,6 +9,6 @@ import java.util.Map;
 @Service
 public interface ServiciosGenerales {
 
-    void login(SesionDTO sesionDTO) throws Exception;
+    boolean login(SesionDTO sesionDTO) throws Exception;
 
 }

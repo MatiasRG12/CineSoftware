@@ -23,5 +23,11 @@ public class LoginController {
     private ServiciosGenerales serviciosGenerales;
     private MessageSource ms;
 
-
+    @PostMapping("/login")
+    public ResponseEntity<MensajeDTO> authentication(@RequestBody @Valid SesionDTO sesionDTO) throws Exception {
+        boolean ward = serviciosGenerales.login(sesionDTO);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("usuario loggeado ", null, LocaleContextHolder.getLocale()), ward));
+    }
 }

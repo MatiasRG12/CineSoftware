@@ -19,7 +19,12 @@ public class ServiciosGeneralesimpl implements ServiciosGenerales {
 
 
     @Override
-    public void login(SesionDTO sesionDTO) throws Exception {
-
+    public boolean login(SesionDTO sesionDTO) throws Exception {
+        String nombreUsuario = sesionDTO.getNombreUsuario();
+        String contrasenia = sesionDTO.getContrasenia();
+        if(!usuarioRepo.buscarUsuario(nombreUsuario,contrasenia)){
+            return false;
+        }
+        return true;
     }
 }
