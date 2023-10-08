@@ -13,6 +13,8 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
+
     private String nombreUsuario;
+
     private String contrasenia;
 }

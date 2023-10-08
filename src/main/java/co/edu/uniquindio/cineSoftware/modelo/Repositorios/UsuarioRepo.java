@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface UsuarioRepo extends JpaRepository<Cliente,String> {
 
 
+    @Query("SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario AND u.contrasenia = :contrasenia")
+    boolean buscarUsuario(String nombreUsuario, String contrasenia);
 }
