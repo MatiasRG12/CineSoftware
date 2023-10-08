@@ -18,6 +18,7 @@ import java.util.Map;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/autenticacion")
 public class LoginController {
 
@@ -29,6 +30,6 @@ public class LoginController {
         UsuarioDTO usuario = serviciosGenerales.login(sesionDTO);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("usuario loggeado ", null, LocaleContextHolder.getLocale()), usuario));
+                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("usuario.loggeado", null, LocaleContextHolder.getLocale()), usuario));
     }
 }

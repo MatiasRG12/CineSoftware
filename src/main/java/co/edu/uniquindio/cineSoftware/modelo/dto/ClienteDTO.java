@@ -20,6 +20,4 @@ public class ClienteDTO {
 
     @NotNull
     private String contrasenia;
-
-
 }
