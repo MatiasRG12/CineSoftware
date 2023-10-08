@@ -25,4 +25,8 @@ public class Pelicula implements Serializable {
 
     @OneToMany(mappedBy = "pelicula")
     private List<Boleto> listaBoletos;
+
+    @ElementCollection
+    private List<String> listaHorarios;
+
 }

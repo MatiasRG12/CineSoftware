@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Getter
 @Setter
@@ -32,4 +34,5 @@ public class PeliculaDTO {
 
     //imagen
 
+    private List<String> listaHorarios;
 }

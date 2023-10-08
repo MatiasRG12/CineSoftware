@@ -60,7 +60,8 @@ public class ServiciosAdministradorimpl implements ServiciosAdministrador {
                 pelicula.getCodigo(),
                 pelicula.getNombre(),
                 pelicula.getDuracion(),
-                pelicula.getLink()
+                pelicula.getLink(),
+                pelicula.getListaHorarios()
         );
     }
 
@@ -70,6 +71,7 @@ public class ServiciosAdministradorimpl implements ServiciosAdministrador {
         pelicula.setNombre(peliculaDTO.getNombre());
         pelicula.setDuracion(peliculaDTO.getDuracionMinutos());
         pelicula.setLink(peliculaDTO.getLink());
+        pelicula.setListaHorarios(peliculaDTO.getListaHorarios());
         return pelicula;
     }
 
