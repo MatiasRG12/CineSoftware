@@ -20,7 +20,7 @@ public class ServiciosAdministradorimpl implements ServiciosAdministrador {
     private MessageSource ms;
 
     @Override
-    public String agregarPelicula(PeliculaDTO peliculaDTO) throws Exception {
+    public Long agregarPelicula(PeliculaDTO peliculaDTO) throws Exception {
         if (peliculaRepo.existsById(peliculaDTO.getCodigo())) {
             throw new Exception(ms.getMessage("ya existe la pelicula", new Object[]{peliculaDTO.getCodigo()}, LocaleContextHolder.getLocale()));
         }
@@ -29,7 +29,7 @@ public class ServiciosAdministradorimpl implements ServiciosAdministrador {
     }
 
     @Override
-    public String eliminarPelicula(String peliculaId) throws Exception {
+    public Long eliminarPelicula(Long peliculaId) throws Exception {
         if(!peliculaRepo.existsById(peliculaId)){
             throw new Exception(ms.getMessage("pelicula no encontrada", new Object[]{peliculaId}, LocaleContextHolder.getLocale()));
         }
@@ -50,11 +50,17 @@ public class ServiciosAdministradorimpl implements ServiciosAdministrador {
         return peliculaDTOS;
     }
 
+    /**
+     * Cambio getLink
+     * @param pelicula
+     * @return
+     */
     private PeliculaDTO convertirADTO(Pelicula pelicula) {
         return new PeliculaDTO(
                 pelicula.getCodigo(),
                 pelicula.getNombre(),
-                pelicula.getDuracion()
+                pelicula.getDuracion(),
+                pelicula.getLink()
         );
     }
 
@@ -63,7 +69,7 @@ public class ServiciosAdministradorimpl implements ServiciosAdministrador {
         pelicula.setCodigo(peliculaDTO.getCodigo());
         pelicula.setNombre(peliculaDTO.getNombre());
         pelicula.setDuracion(peliculaDTO.getDuracionMinutos());
-
+        pelicula.setLink(peliculaDTO.getLink());
         return pelicula;
     }
 
