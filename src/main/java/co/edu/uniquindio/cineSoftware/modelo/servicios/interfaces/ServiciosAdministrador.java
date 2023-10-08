@@ -9,9 +9,9 @@ import java.util.List;
 @Service
 public interface ServiciosAdministrador {
 
-    String agregarPelicula(PeliculaDTO peliculaDTO) throws Exception;
+    Long agregarPelicula(PeliculaDTO peliculaDTO) throws Exception;
 
-    String eliminarPelicula(String peliculaId) throws Exception;
+    Long eliminarPelicula(Long peliculaId) throws Exception;
 
     List<PeliculaDTO> listarPeliculas() throws Exception;
 }

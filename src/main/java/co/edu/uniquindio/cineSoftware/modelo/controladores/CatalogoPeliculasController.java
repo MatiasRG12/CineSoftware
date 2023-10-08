@@ -23,18 +23,18 @@ public class CatalogoPeliculasController {
 
     @PostMapping("/agregarP")
     public ResponseEntity<MensajeDTO> agregarPelicula(@RequestBody @Valid PeliculaDTO peliculaDTO) throws Exception {
-        String pelicula = sa.agregarPelicula(peliculaDTO);
+        Long pelicula = sa.agregarPelicula(peliculaDTO);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("", new Object[]{pelicula}, LocaleContextHolder.getLocale()), pelicula));
+                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("bienvenida.mensaje", new Object[]{pelicula}, LocaleContextHolder.getLocale()), pelicula));
     }
 
     @DeleteMapping ("/eliminarP/{peliculaId}")
-    public ResponseEntity<MensajeDTO> eliminarPelicula(@PathVariable String peliculaId) throws Exception {
-        String peliculaEliminada = sa.eliminarPelicula(peliculaId);
+    public ResponseEntity<MensajeDTO> eliminarPelicula(@PathVariable Long peliculaId) throws Exception {
+        Long peliculaEliminada = sa.eliminarPelicula(peliculaId);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("", new Object[]{peliculaEliminada}, LocaleContextHolder.getLocale()), peliculaEliminada));
+                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("bienvenida.mensaje", new Object[]{peliculaEliminada}, LocaleContextHolder.getLocale()), peliculaEliminada));
     }
 
     @GetMapping("/listar")
