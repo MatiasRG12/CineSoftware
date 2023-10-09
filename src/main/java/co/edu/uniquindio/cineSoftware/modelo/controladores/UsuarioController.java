@@ -25,7 +25,7 @@ public class UsuarioController {
         String usuarioId = serviciosCliente.agregar(usuarioDTO);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("", new Object[]{usuarioId}, LocaleContextHolder.getLocale()), usuarioId));
+                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("bienvenida.mensaje", new Object[]{usuarioId}, LocaleContextHolder.getLocale()), usuarioId));
     }
 
 }

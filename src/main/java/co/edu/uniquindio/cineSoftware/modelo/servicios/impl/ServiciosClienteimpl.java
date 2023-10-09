@@ -23,18 +23,16 @@ public class ServiciosClienteimpl implements ServiciosCliente {
             throw  new Exception(ms.getMessage("Usuario ya existe", new Object[]{clienteDTO.getCodigo()}, LocaleContextHolder.getLocale()));
         }
         Cliente cliente = convertirAEntidad(clienteDTO);
-        String codigo = String.valueOf(clienteRepo.save(cliente));
-        return codigo;
+        return String.valueOf(clienteRepo.save(cliente));
     }
 
     private Cliente convertirAEntidad(ClienteDTO clienteDTO) {
-
 
         Cliente cliente = new Cliente();
         cliente.setCodigo(clienteDTO.getCodigo());
         cliente.setNombre(clienteDTO.getNombre());
         cliente.setNombreUsuario(clienteDTO.getNombreUsuario());
         cliente.setContrasenia(clienteDTO.getContrasenia());
-        return null;
+        return cliente;
     }
 }
