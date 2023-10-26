@@ -21,11 +21,19 @@ public class UsuarioController {
     private MessageSource ms;
 
     @PostMapping("/agregar")
-    private ResponseEntity<MensajeDTO> agregarUsuario (@RequestBody @Valid ClienteDTO usuarioDTO) throws Exception {
+    public ResponseEntity<MensajeDTO> agregarUsuario (@RequestBody @Valid ClienteDTO usuarioDTO) throws Exception {
         String usuarioId = serviciosCliente.agregar(usuarioDTO);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("bienvenida.mensaje", new Object[]{usuarioId}, LocaleContextHolder.getLocale()), usuarioId));
+    }
+
+    @GetMapping("/obtenerPrecioBoleta")
+    public ResponseEntity<MensajeDTO> obtenerPrecio (@PathVariable int codigoCliente)throws Exception{
+        Double precio = serviciosCliente.obtenerPrecioBoletas(codigoCliente);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("bienvenida.mensaje", null, LocaleContextHolder.getLocale()),precio));
     }
 
 }

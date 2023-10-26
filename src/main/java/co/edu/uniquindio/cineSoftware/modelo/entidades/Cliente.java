@@ -15,8 +15,8 @@ public class Cliente extends Usuario implements Serializable {
 
     private String nombre;
 
-    @OneToOne
-    private Membresia membresia;
+
+    private boolean membresia;
 
     @OneToMany(mappedBy = "cliente")
     private List<Boleto> listaBoleto;

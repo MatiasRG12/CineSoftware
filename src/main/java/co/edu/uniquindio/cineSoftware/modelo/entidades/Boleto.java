@@ -13,7 +13,7 @@ public class Boleto implements Serializable {
     @Id
     private String codigo;
 
-    private float precio;
+    private Double precio;
 
     @ManyToOne
     private Cliente cliente;

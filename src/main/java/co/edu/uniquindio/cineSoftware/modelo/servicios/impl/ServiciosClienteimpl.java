@@ -10,6 +10,8 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service("ServiciosCliente")
 @AllArgsConstructor
 public class ServiciosClienteimpl implements ServiciosCliente {
@@ -24,6 +26,19 @@ public class ServiciosClienteimpl implements ServiciosCliente {
         }
         Cliente cliente = convertirAEntidad(clienteDTO);
         return String.valueOf(clienteRepo.save(cliente));
+    }
+
+    @Override
+    public Double obtenerPrecioBoletas(int codigoCliente) throws Exception {
+        Optional<Cliente> opcional = clienteRepo.findById(codigoCliente);
+        if (opcional.isEmpty()){
+            throw new Exception("Cliente no existe");
+        }
+        Cliente cliente = opcional.get();
+        if(cliente.isMembresia()){
+            return 10000.0;
+        }
+        return 15000.0;
     }
 
     private Cliente convertirAEntidad(ClienteDTO clienteDTO) {

@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ServiciosCliente {
     String agregar(ClienteDTO usuarioDTO) throws Exception;
+
+    Double obtenerPrecioBoletas(int codigoCliente) throws Exception;
+
 }
