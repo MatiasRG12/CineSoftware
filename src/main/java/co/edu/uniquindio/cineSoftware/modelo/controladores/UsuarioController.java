@@ -28,12 +28,6 @@ public class UsuarioController {
                 .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("bienvenida.mensaje", new Object[]{usuarioId}, LocaleContextHolder.getLocale()), usuarioId));
     }
 
-    @GetMapping("/obtenerPrecioBoleta")
-    public ResponseEntity<MensajeDTO> obtenerPrecio (@PathVariable int codigoCliente)throws Exception{
-        Double precio = serviciosCliente.obtenerPrecioBoletas(codigoCliente);
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(new MensajeDTO(HttpStatus.OK, false, ms.getMessage("bienvenida.mensaje", null, LocaleContextHolder.getLocale()),precio));
-    }
+
 
 }

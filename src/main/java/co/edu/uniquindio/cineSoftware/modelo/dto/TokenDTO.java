@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TokenDTO {
+
     @NotEmpty(message = "{token.empty}")
     private String token;
 }
