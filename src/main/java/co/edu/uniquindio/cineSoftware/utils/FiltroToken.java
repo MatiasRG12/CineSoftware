@@ -25,7 +25,7 @@ public class FiltroToken implements Filter{
         String token = getToken(req);
         boolean error = true;
         try{
-            if (requestURI.startsWith("/catalogoP") || requestURI.startsWith("/boleteria")){
+            if (requestURI.startsWith("/catalogoP/eliminarP") || requestURI.startsWith("/catalogoP/agregarP") || requestURI.startsWith("/boleteria")){
                 if (token != null) {
                     Jws<Claims> jws = jwtUtils.parseJwt(token);
 

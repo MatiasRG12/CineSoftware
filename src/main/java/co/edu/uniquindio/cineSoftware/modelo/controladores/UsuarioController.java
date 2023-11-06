@@ -5,6 +5,7 @@ import co.edu.uniquindio.cineSoftware.modelo.dto.ClienteDTO;
 import co.edu.uniquindio.cineSoftware.modelo.servicios.interfaces.ServiciosCliente;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class UsuarioController {
 
     private ServiciosCliente serviciosCliente;
+    @Autowired
     private MessageSource ms;
 
     @PostMapping("/agregar")

@@ -7,6 +7,7 @@ import co.edu.uniquindio.cineSoftware.modelo.servicios.interfaces.ServiciosAdmin
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -18,8 +19,9 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/catalogoP")
 public class CatalogoPeliculasController {
-
+    @Autowired
     private ServiciosAdministrador sa;
+    @Autowired
     private MessageSource ms;
 
     @PostMapping("/agregarP")

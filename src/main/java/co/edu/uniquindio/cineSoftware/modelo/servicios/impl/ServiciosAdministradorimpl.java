@@ -5,6 +5,7 @@ import co.edu.uniquindio.cineSoftware.modelo.dto.PeliculaDTO;
 import co.edu.uniquindio.cineSoftware.modelo.entidades.Pelicula;
 import co.edu.uniquindio.cineSoftware.modelo.servicios.interfaces.ServiciosAdministrador;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class ServiciosAdministradorimpl implements ServiciosAdministrador {
 
     private PeliculaRepo peliculaRepo;
+    @Autowired
     private MessageSource ms;
 
     @Override

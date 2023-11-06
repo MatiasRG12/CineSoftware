@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
-@Service
 public interface ServiciosAdministrador {
 
     Long agregarPelicula(PeliculaDTO peliculaDTO) throws Exception;
