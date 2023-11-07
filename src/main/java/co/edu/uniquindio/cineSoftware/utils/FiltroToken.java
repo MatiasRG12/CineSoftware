@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
+import java.util.Base64;
+import java.util.Enumeration;
 
 @Component
 @RequiredArgsConstructor
@@ -25,14 +27,13 @@ public class FiltroToken implements Filter{
         String token = getToken(req);
         boolean error = true;
         try{
-            if (requestURI.startsWith("/catalogoP/eliminarP") || requestURI.startsWith("/catalogoP/agregarP") || requestURI.startsWith("/boleteria")){
+            if ((requestURI.startsWith("/catalogoP/eliminarP") && req.getMethod().equals("DELETE")) || (requestURI.startsWith("/catalogoP/agregarP") && req.getMethod().equals("POST")) || requestURI.startsWith("/boleteria")){
+
                 if (token != null) {
-                    Jws<Claims> jws = jwtUtils.parseJwt(token);
 
-                    if ((requestURI.startsWith("/catalogoP")&&!jws.getBody().get("rol").equals("administrador"))
-                            ||(requestURI.startsWith("/catalogoP")&&!jws.getBody().get("rol").equals("cliente"))
-                            ||(requestURI.startsWith("/boleteria")&&!jws.getBody().get("rol").equals("cliente"))){
-
+                    //Jws<Claims> jws = jwtUtils.parseJwt(token);
+                    String rol = decodificarToken(token);
+                    if (!rol.contains("administrador") && !rol.contains("cliente")){
                         crearRespuestaError("No tiene los permisos para acceder",HttpServletResponse.SC_FORBIDDEN,res);
                     }else{
                         error = false;
@@ -51,6 +52,12 @@ public class FiltroToken implements Filter{
             crearRespuestaError(e.getMessage(), HttpServletResponse.SC_INTERNAL_SERVER_ERROR, res);
         }
         chain.doFilter(request, response);
+    }
+
+    private String decodificarToken(String token) {
+        String[] partes = token.split("\\.");
+        byte[] aux = Base64.getDecoder().decode(partes[1]);
+        return new String(aux);
     }
 
     private void crearRespuestaError(String mensaje, int scForbidden, HttpServletResponse response) throws IOException{
